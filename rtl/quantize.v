@@ -27,5 +27,3 @@ always@* begin
 		else quantized_data[i*OUTPUT_DATA_WIDTH +: OUTPUT_DATA_WIDTH] = ori_shifted_data[OUTPUT_DATA_WIDTH-1:0];
 	end
 end
-
-endmodule
