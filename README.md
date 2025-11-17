@@ -38,26 +38,26 @@ Below is the high-level architecture of the 8×8 TPU-Style Systolic Array:
 #Download or Clone the Repository
               git clone https://github.com/<your-username>/systolic_accelerator.git
              Or download the ZIP and extract it. 
-#	Open Vivado
+--	Open Vivado
               Start Vivado from terminal or desktop:
                vivado &
-#	Create a New Vivado Project
+-- Create a New Vivado Project
 1.	Click Create New Project
 2.	Select RTL Project
 3.	Check "Do not specify sources at this time"
 4.	Select your FPGA board or part (e.g., PYNQ-Z2 → xc7z020clg400-1)
 5.	Finish
    
-# Add RTL (Design) Files
+-- Add RTL (Design) Files
 Go to:
 Project Manager → Add Sources → Add or Create Design Sources
 Add all files from:
 rtl/ & testbench/
-# Set the Simulation Top Module
+-- Set the Simulation Top Module
 Vivado → Run Simulation → Run Behavioral Simulation
 If prompted, set:
 test_tpu.v
-# Run Behavioral Simulation
+-- Run Behavioral Simulation
 1.	Click Run Behavioral Simulation
 2.	Wait for testbench to run
 3.	Check the console output for:
@@ -66,42 +66,42 @@ o	Three matrix groups
 o	PASS/FAIL results
 o	Throughput summary
 
-## Expected output:
+-- Expected output:
 Throughput: 8.951 GOPS
 Total cycles: 44
 Execution time: 114.40 ns
 All addresses PASS!!
 
-# Add Constraint File (For FPGA Build)
+-- Add Constraint File (For FPGA Build)
 Go to:
 Add Sources → Add or Create Constraints
 Add:
 constraints/pynq_z2.xdc
 This maps the FPGA pins (clock, reset, start button, LED).
-# Set FPGA Top Module
+-- Set FPGA Top Module
 In the Sources window:
 •	Right-click tpu_fpga_wrapper.v
 •	Select Set as Top
-# Run Synthesis
+-- Run Synthesis
 Click:
 Flow Navigator → Run Synthesis
 Wait for synthesis to complete.
-# Run Implementation
+-- Run Implementation
 Click:
 Run Implementation
 This performs place & route.
-# Generate Bitstream
+-- Generate Bitstream
 Click:
 Generate Bitstream
 Vivado will output a .bit file.
-# Program the FPGA
+-- Program the FPGA
 1.	Connect FPGA board
 2.	Go to Hardware Manager
 3.	Open Target → Auto Connect
 4.	Click Program Device
 5.	Select the generated .bit file
 
-# To start the TPU:
+-- To start the TPU:
 •	Press BTN1
 •	LED0 lights up when computation is done
 
