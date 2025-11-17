@@ -19,3 +19,4 @@ A centralized control module (controller.v) coordinates data injection, propagat
 For FPGA deployment, tpu_fpga_wrapper.v maps the design to physical I/O—including clock, reset, start signals, and LED status.
 This modular structure allows easy extension to larger arrays (e.g., 16×16) or integration with AXI interfaces for real system-on-chip use.
 
+
