@@ -1,16 +1,15 @@
-Introduction:
+##Introduction:
 This project implements a custom 8×8 TPU-style systolic array accelerator for matrix multiplication. The design multiplies an 8×8 weight matrix (Matrix A) with an 8×8 input/data matrix (Matrix B) using a fully pipelined parallel architecture. Before computation begins, the elements of both matrices are reordered into a systolic-friendly streaming format, then fed into dedicated input queues. These queues deliver one value per cycle into the systolic grid.
 Each Processing Element (PE) performs a multiply–accumulate (MAC) operation using the weight and data values it receives. On every clock cycle, weights propagate from top to bottom, and data propagate from left to right. This movement creates a rhythmic “wavefront” of computation that spreads across the array—allowing all 64 PEs to work in parallel.
 The design therefore achieves highly efficient matrix multiplication with a measured throughput of 8.951 GOPS in simulation.
 
-Systolic Array Architecture:
+##Systolic Array Architecture:
 At the heart of the design is an 8×8 grid of Processing Elements.
 Each PE contains three fundamental registers:
 1.	A weight register to store and pass Matrix A elements downward
 2.	A data register to store and pass Matrix B elements rightward
 3.	An accumulator (ALU) to add the product of weight × data to the running partial sum
 Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefront fashion. Every cycle, new values enter from the top and left edges, propagate across the array, and partial sums accumulate until final results emerge from the bottom-right region.
-## Systolic Array Architecture
 
 ![Systolic Architecture]("fpga/arch of Sys.png")
 
@@ -34,29 +33,30 @@ Below is the high-level architecture of the 8×8 TPU-Style Systolic Array:
 
 
 
-Steps to Run This Project in Vivado
-1.	Download or Clone the Repository
+##Steps to Run This Project in Vivado:
+#Download or Clone the Repository
               git clone https://github.com/<your-username>/systolic_accelerator.git
              Or download the ZIP and extract it. 
-2.	Open Vivado
+#	Open Vivado
               Start Vivado from terminal or desktop:
                vivado &
-3.	Create a New Vivado Project
+#	Create a New Vivado Project
 1.	Click Create New Project
 2.	Select RTL Project
 3.	Check "Do not specify sources at this time"
 4.	Select your FPGA board or part (e.g., PYNQ-Z2 → xc7z020clg400-1)
 5.	Finish
-4 . Add RTL (Design) Files
+   
+# Add RTL (Design) Files
 Go to:
 Project Manager → Add Sources → Add or Create Design Sources
 Add all files from:
 rtl/ & testbench/
-5. Set the Simulation Top Module
+# Set the Simulation Top Module
 Vivado → Run Simulation → Run Behavioral Simulation
 If prompted, set:
 test_tpu.v
-6. Run Behavioral Simulation
+#Run Behavioral Simulation
 1.	Click Run Behavioral Simulation
 2.	Wait for testbench to run
 3.	Check the console output for:
@@ -65,22 +65,23 @@ o	Three matrix groups
 o	PASS/FAIL results
 o	Throughput summary
 
-Expected output:
+#Expected output:
 Throughput: 8.951 GOPS
 Total cycles: 44
 Execution time: 114.40 ns
 All addresses PASS!!
-7.Add Constraint File (For FPGA Build)
+
+#Add Constraint File (For FPGA Build)
 Go to:
 Add Sources → Add or Create Constraints
 Add:
 constraints/pynq_z2.xdc
 This maps the FPGA pins (clock, reset, start button, LED).
-8. Set FPGA Top Module
+# Set FPGA Top Module
 In the Sources window:
 •	Right-click tpu_fpga_wrapper.v
 •	Select Set as Top
-9. Run Synthesis
+#Run Synthesis
 Click:
 Flow Navigator → Run Synthesis
 Wait for synthesis to complete.
@@ -88,11 +89,11 @@ Wait for synthesis to complete.
 Click:
 Run Implementation
 This performs place & route.
-11.Generate Bitstream
+#Generate Bitstream
 Click:
-Generate Bitstream
+##Generate Bitstream
 Vivado will output a .bit file.
-12. Program the FPGA
+# Program the FPGA
 1.	Connect FPGA board
 2.	Go to Hardware Manager
 3.	Open Target → Auto Connect
