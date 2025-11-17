@@ -1,16 +1,19 @@
-##Introduction:
+#Introduction:
 This project implements a custom 8×8 TPU-style systolic array accelerator for matrix multiplication. The design multiplies an 8×8 weight matrix (Matrix A) with an 8×8 input/data matrix (Matrix B) using a fully pipelined parallel architecture. Before computation begins, the elements of both matrices are reordered into a systolic-friendly streaming format, then fed into dedicated input queues. These queues deliver one value per cycle into the systolic grid.
 Each Processing Element (PE) performs a multiply–accumulate (MAC) operation using the weight and data values it receives. On every clock cycle, weights propagate from top to bottom, and data propagate from left to right. This movement creates a rhythmic “wavefront” of computation that spreads across the array—allowing all 64 PEs to work in parallel.
 The design therefore achieves highly efficient matrix multiplication with a measured throughput of 8.951 GOPS in simulation.
 
-##Systolic Array Architecture
+#Systolic Array Architecture
 At the heart of the design is an 8×8 grid of Processing Elements.
 Each PE contains three fundamental registers:
 1.	A weight register to store and pass Matrix A elements downward
 2.	A data register to store and pass Matrix B elements rightward
 3.	An accumulator (ALU) to add the product of weight × data to the running partial sum
 Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefront fashion. Every cycle, new values enter from the top and left edges, propagate across the array, and partial sums accumulate until final results emerge from the bottom-right region.
-##Systolic Array Architecture:
+
+
+##Systolic Array Architecture
+
 ![Systolic Architecture]("fpga/arch of Sys.png")
 
 
