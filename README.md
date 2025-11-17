@@ -1,9 +1,9 @@
-#Introduction:
+# Introduction:
 This project implements a custom 8×8 TPU-style systolic array accelerator for matrix multiplication. The design multiplies an 8×8 weight matrix (Matrix A) with an 8×8 input/data matrix (Matrix B) using a fully pipelined parallel architecture. Before computation begins, the elements of both matrices are reordered into a systolic-friendly streaming format, then fed into dedicated input queues. These queues deliver one value per cycle into the systolic grid.
 Each Processing Element (PE) performs a multiply–accumulate (MAC) operation using the weight and data values it receives. On every clock cycle, weights propagate from top to bottom, and data propagate from left to right. This movement creates a rhythmic “wavefront” of computation that spreads across the array—allowing all 64 PEs to work in parallel.
 The design therefore achieves highly efficient matrix multiplication with a measured throughput of 8.951 GOPS in simulation.
 
-#Systolic Array Architecture
+# Systolic Array Architecture
 At the heart of the design is an 8×8 grid of Processing Elements.
 Each PE contains three fundamental registers:
 1.	A weight register to store and pass Matrix A elements downward
@@ -12,7 +12,7 @@ Each PE contains three fundamental registers:
 Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefront fashion. Every cycle, new values enter from the top and left edges, propagate across the array, and partial sums accumulate until final results emerge from the bottom-right region.
 
 
-##Systolic Array Architecture
+## Systolic Array Architecture
 
 ![Systolic Architecture]("fpga/arch of Sys.png")
 
@@ -59,7 +59,7 @@ rtl/ & testbench/
 Vivado → Run Simulation → Run Behavioral Simulation
 If prompted, set:
 test_tpu.v
-#Run Behavioral Simulation
+# Run Behavioral Simulation
 1.	Click Run Behavioral Simulation
 2.	Wait for testbench to run
 3.	Check the console output for:
@@ -68,13 +68,13 @@ o	Three matrix groups
 o	PASS/FAIL results
 o	Throughput summary
 
-#Expected output:
-Throughput: 8.951 GOPS
-Total cycles: 44
-Execution time: 114.40 ns
-All addresses PASS!!
+## Expected output:
+# Throughput: 8.951 GOPS
+# Total cycles: 44
+# Execution time: 114.40 ns
+# All addresses PASS!!
 
-#Add Constraint File (For FPGA Build)
+# Add Constraint File (For FPGA Build)
 Go to:
 Add Sources → Add or Create Constraints
 Add:
@@ -84,17 +84,17 @@ This maps the FPGA pins (clock, reset, start button, LED).
 In the Sources window:
 •	Right-click tpu_fpga_wrapper.v
 •	Select Set as Top
-#Run Synthesis
+# Run Synthesis
 Click:
 Flow Navigator → Run Synthesis
 Wait for synthesis to complete.
-10. Run Implementation
+# Run Implementation
 Click:
 Run Implementation
 This performs place & route.
-#Generate Bitstream
+# Generate Bitstream
 Click:
-##Generate Bitstream
+# Generate Bitstream
 Vivado will output a .bit file.
 # Program the FPGA
 1.	Connect FPGA board
