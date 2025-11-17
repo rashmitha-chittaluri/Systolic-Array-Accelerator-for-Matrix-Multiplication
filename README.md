@@ -18,5 +18,14 @@ The systolic array itself is instantiated from systolic.v, which builds the 8×8
 A centralized control module (controller.v) coordinates data injection, propagation timing, and accumulation windows.
 For FPGA deployment, tpu_fpga_wrapper.v maps the design to physical I/O—including clock, reset, start signals, and LED status.
 This modular structure allows easy extension to larger arrays (e.g., 16×16) or integration with AXI interfaces for real system-on-chip use.
+## Architecture Overview
+Below is the high-level architecture of the 8×8 TPU-Style Systolic Array:
+
+![Architecture](docs/Arch.png)
+
+## Vivado Floorplan
+The FPGA floorplan generated during implementation:
+
+![Vivado Floorplan](docs/vivado_floorplan.png)
 
 
