@@ -16,7 +16,7 @@ Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefr
 
 
 
-Design Architecture (Modules Overview):
+## Design Architecture (Modules Overview):
 The full system is organized into modular Verilog components.
 At the top level, tpu_top.v connects the systolic array, controller, and on-chip memory structures.
 The systolic array itself is instantiated from systolic.v, which builds the 8×8 grid of PEs from pe.v.
@@ -92,7 +92,7 @@ Run Implementation
 This performs place & route.
 # Generate Bitstream
 Click:
-# Generate Bitstream
+Generate Bitstream
 Vivado will output a .bit file.
 # Program the FPGA
 1.	Connect FPGA board
