@@ -11,6 +11,8 @@ Each PE contains three fundamental registers:
 3.	An accumulator (ALU) to add the product of weight × data to the running partial sum
 Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefront fashion. Every cycle, new values enter from the top and left edges, propagate across the array, and partial sums accumulate until final results emerge from the bottom-right region.
 
+
+
 Design Architecture (Modules Overview)
 The full system is organized into modular Verilog components.
 At the top level, tpu_top.v connects the systolic array, controller, and on-chip memory structures.
