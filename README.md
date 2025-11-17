@@ -12,9 +12,7 @@ Each PE contains three fundamental registers:
 Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefront fashion. Every cycle, new values enter from the top and left edges, propagate across the array, and partial sums accumulate until final results emerge from the bottom-right region.
 
 
-## Systolic Array Architecture
-
-![Systolic Architecture]("fpga/arch of Sys.png")
+![Systolic Architecture](fpga/arch%20of%20Sys.png)
 
 
 
@@ -36,7 +34,7 @@ Below is the high-level architecture of the 8×8 TPU-Style Systolic Array:
 
 
 
-##Steps to Run This Project in Vivado:
+## Steps to Run This Project in Vivado:
 #Download or Clone the Repository
               git clone https://github.com/<your-username>/systolic_accelerator.git
              Or download the ZIP and extract it. 
@@ -69,10 +67,10 @@ o	PASS/FAIL results
 o	Throughput summary
 
 ## Expected output:
-# Throughput: 8.951 GOPS
-# Total cycles: 44
-# Execution time: 114.40 ns
-# All addresses PASS!!
+Throughput: 8.951 GOPS
+Total cycles: 44
+Execution time: 114.40 ns
+All addresses PASS!!
 
 # Add Constraint File (For FPGA Build)
 Go to:
@@ -102,7 +100,8 @@ Vivado will output a .bit file.
 3.	Open Target → Auto Connect
 4.	Click Program Device
 5.	Select the generated .bit file
-To start the TPU:
+
+# To start the TPU:
 •	Press BTN1
 •	LED0 lights up when computation is done
 
