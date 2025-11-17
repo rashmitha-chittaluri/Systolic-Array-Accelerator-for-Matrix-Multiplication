@@ -1,4 +1,4 @@
-# Introduction:
+# Introduction
 This project implements a custom 8×8 TPU-style systolic array accelerator for matrix multiplication. The design multiplies an 8×8 weight matrix (Matrix A) with an 8×8 input/data matrix (Matrix B) using a fully pipelined parallel architecture. Before computation begins, the elements of both matrices are reordered into a systolic-friendly streaming format, then fed into dedicated input queues. These queues deliver one value per cycle into the systolic grid.
 Each Processing Element (PE) performs a multiply–accumulate (MAC) operation using the weight and data values it receives. On every clock cycle, weights propagate from top to bottom, and data propagate from left to right. This movement creates a rhythmic “wavefront” of computation that spreads across the array—allowing all 64 PEs to work in parallel.
 The design therefore achieves highly efficient matrix multiplication with a measured throughput of 8.951 GOPS in simulation.
@@ -16,7 +16,7 @@ Together, these 64 PEs compute the entire 8×8 matrix multiplication in a wavefr
 
 
 
-## Design Architecture (Modules Overview):
+## Design Architecture (Modules Overview)
 The full system is organized into modular Verilog components.
 At the top level, tpu_top.v connects the systolic array, controller, and on-chip memory structures.
 The systolic array itself is instantiated from systolic.v, which builds the 8×8 grid of PEs from pe.v.
@@ -34,7 +34,7 @@ Below is the high-level architecture of the 8×8 TPU-Style Systolic Array:
 
 
 
-## Steps to Run This Project in Vivado:
+## Steps to Run This Project in Vivado
 #Download or Clone the Repository
               git clone https://github.com/<your-username>/systolic_accelerator.git
              Or download the ZIP and extract it. 
