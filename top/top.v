@@ -22,7 +22,7 @@ module top (
 // ---------- Parameters ------------------
 // ========================================
 
-    parameter WIDTH_HEIGHT = 16;
+    parameter WIDTH_HEIGHT = 8;
     parameter DATA_WIDTH = 8;
     parameter MAX_MAT_WH = 128;
 
