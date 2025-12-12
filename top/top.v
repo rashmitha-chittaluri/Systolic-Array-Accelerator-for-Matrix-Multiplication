@@ -1,11 +1,3 @@
-// for a new class of processors : Tensor Processing Units (TPU). These hardware accelerators are designed with
-// neural networks in mind, and allow host CPUs to offload computationally expensive tensor operations to them.
-// We implement our own, low-power, scalable TPU intended for embedded and mobile applications, and evaluate its
-// performance using a simulated fully connected neural Network layer.
-// Since: 2021-03-29 12:15:53
-// LastEditors: ahmed abdelazeem
-//********************************************************************
-// Module Function:
 
 module top (
     clk,
